@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link type="text/css" rel="styleSheet"  href="css2.css" />
+    <title>红小豆</title>
+  </head>
+  <body>
+    <div class="head">
+      <li class="head_11"></li>
+      <li class="head_21">精选</li>
+      <li class="head_22">院线</li>
+      <li class="head_23">动作</li>
+      <li class="head_24">喜剧</li>
+      <li class="head_25">犯罪</li>
+      <li class="head_26">全部</li>
+      <li class="head_31">
+        <input type="text" placeholder="请输入" />
+        <div class="head_32">
+          <div class="suos"></div>
+        </div>
+      </li>
+      <li class="head_41"></li>
+    </div>
+    <div class="ui-tab">
+      <!-- 具体消息内容 -->
+    </div>
+    <div class="paging">
+      <!-- 分页布局-->
+      <table>
+        <tr class="page-font">
+          <td width="">
+            <img
+              src="箭头-2.png"
+              width="50px"
+              height="50px"
+              class="firstPage"
+              onclick="page_click(this)"
+            />
+          </td>
+          <td>
+            <img
+              src="箭头-1.png"
+              width="50px"
+              height="50px"
+              class="beforePage"
+              onclick="page_click(this)"
+            />
+          </td>
+          <td>
+            &nbsp;&nbsp;|&nbsp;第<input
+              type="button"
+              class="currentPage"
+              value="1"
+              readonly="readonly"
+            />页
+          </td>
+          <td>
+            &nbsp;&nbsp;&nbsp;共<input
+              type="button"
+              class="totalPage"
+              value="1"
+              readonly="readonly"
+            />页&nbsp;|&nbsp;&nbsp;
+          </td>
+          <td>
+            <img
+              src="箭头1.png"
+              width="55px"
+              height="50px"
+              class="nextPage"
+              onclick="page_click(this)"
+            />
+          </td>
+          <td>
+            <img
+              src="箭头2.png"
+              width="55px"
+              height="50px"
+              class="lastPage"
+              onclick="page_click(this)"
+            />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script type="text/javascript">
+      var totalPage = 2; //一共多少页
+      var currentPage = 1; //当前页码
+      var information_lenght = [];
+      //前端获取后台数据并呈现方法
+      function information_display() {
+        var data = [
+          {
+            title1: "请吃红小豆吧！ 第一季",
+            title2: "原创/搞笑/萌系/日常",
+            title3: "中国大陆",
+            title4: "2018年7月5日",
+            title5: "红小豆...",
+            title6:
+              "简介：《请吃红小豆吧！》的主角是一颗梦想着被吃掉的红豆,它每天的工作就是在各种红豆冰沙抹茶红豆蛋糕红豆珍珠奶茶豆沙包...里混吃等死,上班的时候认识了非常多特别的小伙伴,例如珍珠。",
+            title7: "请吃红小豆吧！ 番外篇",
+            title8: "原创/泡面/萌系",
+            title9: "中国大陆",
+            title10: "2019年7月19日",
+            title11: "红小豆...",
+            title12:
+              "简介：红豆生南国，春来发几枝，愿君多采撷，此物最相思。一颗红豆不懂人间，却看尽世上悠悠情意...",
+          },
+        ];
+        $(".ui-tab").empty();
+        $.each(data, function (index, n) {
+          var infor_title =
+            '<div class="ss ss1">' +
+            '<span class="ss11"></span>' +
+            '<span class="ss12">' +
+            '<div class="ssz1">' +
+            data[index].title1 +
+            "</div>" +
+            '<div class="ssz2">' +
+            '<span class="ssz2-1">' +
+            "风格:" +
+            "</span>" +
+            '<span class="ssz2-2">' +
+            data[index].title2 +
+            "</span>" +
+            '<span  class="ssz2-3">' +
+            "地区：" +
+            "</span>" +
+            '<span class="ssz2-4">' +
+            data[index].title3 +
+            "</span>" +
+            "</div>" +
+            '<div class="ssz3">' +
+            '<span class="ssz2-1">' +
+            "开播时间：" +
+            "</span>" +
+            '<span class="ssz2-2">' +
+            data[index].title4 +
+            "</span>" +
+            '<span  class="ssz2-3">' +
+            "声优：" +
+            "</span>" +
+            '<span class="ssz2-4">' +
+            data[index].title5 +
+            "</span>" +
+            "</div>" +
+            '<div class="ssz4">' +
+            data[index].title6 +
+            "</div>" +
+            '<div class="but">' +
+            '<input type="button" class="but1 but1-1" vpath="EP01.mp4" value="1">' +
+            '<input type="button" class="but1 but1-2" vpath="EP02.mp4" value="2">' +
+            '<input type="button" class="but1 but1-3" vpath="EP03.mp4" value="3">' +
+            '<input type="button" class="but1 but1-4" vpath="EP04.mp4" value="4">' +
+            '<input type="button" class="but1 but1-5" vpath="EP05.mp4" value="5">' +
+            '<input type="button" class="but1 but1-6" vpath="EP06.mp4" value="6">' +
+            '<input type="button" class="but1 but1-7" vpath="EP07.mp4" value="7">' +
+            '<input type="button" class="but1 but1-8" vpath="EP08.mp4" value="8">' +
+            '<input type="button" class="but1 but1-9" vpath="EP09.mp4" value="9">' +
+            '<input type="button" class="but1 but1-10" vpath="EP10.mp4" value="10">' +
+            '<input type="button" class="but1 but1-11" vpath="EP11.mp4" value="11">' +
+            '<input type="button" class="but1 but1-12" vpath="EP12.mp4" value="12">' +
+            "</div>" +
+            "</\span>" +
+            "</div>" +
+            '<div class="ss ss1">' +
+            '<span class="ss21"></span>' +
+            '<span class="ss12">' +
+            '<div class="ssz1">' +
+            data[index].title7 +
+            "</div>" +
+            '<div class="ssz2">' +
+            '<span class="ssz2-1">' +
+            "风格：" +
+            "</span>" +
+            '<span class="ssz2-2">' +
+            data[index].title8 +
+            "</span>" +
+            '<span  class="ssz2-3">' +
+            "地区：" +
+            "</span>" +
+            '<span class="ssz2-4">' +
+            data[index].title9 +
+            "</span>" +
+            "</div>" +
+            '<div class="ssz3">' +
+            '<span class="ssz2-1">' +
+            "开播时间：" +
+            "</span>" +
+            '<span class="ssz2-2">' +
+            data[index].title10 +
+            "</span>" +
+            '<span  class="ssz2-3">' +
+            "声优：" +
+            "</span>" +
+            '<span class="ssz2-4">' +
+            data[index].title11 +
+            "</span>" +
+            "</div>" +
+            '<div class="ssz4">' +
+            data[index].title12 +
+            "</div>" +
+            '<div class="but">' +
+            '<input type="button" class="but1 but1-1" vpath="EP01.mp4" value="1">' +
+            '<input type="button" class="but1 but1-2" vpath="EP02.mp4" value="2">' +
+            '<input type="button" class="but1 but1-3" vpath="EP03.mp4" value="3">' +
+            "</div>" +
+            "</span>" +
+            "</div>" +
+            '<div class="videos">' +
+            "</div>";
+          $(".ui-tab").append(infor_title);
+        });
+      }
+      //为测试分页功能代码，进行网络请求后便不需要
+      function information_display2() {
+        var data = [
+          {
+            title1: "你很酷哦",
+            title2: "啊！大草原",
+            title3: "一起来玩呀！",
+            title4: "煲剧啦",
+            title5: "探班咯",
+            title6: "哇！放假",
+            title7: "雨中芦荟",
+            title8: "红豆抹茶蛋糕",
+            title9: "红豆芋圆",
+            title10: "豆沙猪猪包",
+            title11: "红豆双皮奶",
+            title12: "红豆传",
+          },
+        ];
+        $(".ui-tab").empty();
+        $.each(data, function (index, n) {
+          var infor_title =
+            // var infor_title = "<table  class=\"title\">"
+            // 	+ "<tr >"
+            // 	+ "<td>" + data[index].title + "</td>"
+            // 	+ "</tr>"
+            // 	+ "</table>";
+            $(".ui-tab").append(infor_title);
+        });
+      }
+
+      //初始化加载，分页首页数据，输入：每页多少条数据，当前页（默认为1）；输出：当前页数据和总页数
+      window.onload = function () {
+        $(".totalPage").attr("value", totalPage);
+        information_display();
+      };
+      //上一页、下一页，首页和尾页的单击触发事件
+      function page_click(item) {
+        console.log(item);
+        //首页
+        if ($(item).attr("class") == "firstPage") {
+          console.log("firstPage");
+          pageNumber = parseInt($(".currentPage").attr("value"));
+          $(".currentPage").attr("value", 1);
+        }
+        //上一页
+        else if ($(item).attr("class") == "beforePage") {
+          console.log("beforePage");
+          pageNumber = parseInt($(".currentPage").attr("value"));
+          if (pageNumber > 1) {
+            $(".currentPage").attr("value", pageNumber - 1);
+            information_display();
+          } else {
+            $(".beforePage").attr("disabled", false);
+          }
+        }
+        //下一页
+        else if ($(item).attr("class") == "nextPage") {
+          console.log("nextPage");
+          pageNumber = parseInt($(".currentPage").attr("value"));
+          if (pageNumber < totalPage) {
+            $(".currentPage").attr("value", pageNumber + 1);
+            information_display2();
+          } else {
+            $(".nextPage").attr("disabled", false);
+          }
+        }
+        //尾页
+        else {
+          console.log("lastPage");
+          pageNumber = parseInt($(".currentPage").attr("value"));
+          $(".currentPage").attr("value", totalPage);
+        }
+      }
+      function vedio_click(item) {
+        console.log(item);
+      }
+      $(document).on("click", ".but1", function (e) {
+        //这个视频被点击后执行
+        var video = $(this).attr("vpath"); //获取视频路径
+        $(".videos").html(
+          "<video id=\"video\" style='width: 100%;' src='" +
+            video +
+            '\' preload="auto" controls="controls" autoplay="autoplay"></video><img onClick="close1()" class="vclose" src="http://sucai.suoluomei.cn/sucai_zs/images/20190816134237-%E5%85%B3%E9%97%AD%20%281%29.png"/>'
+        );
+        $(".videos").show();
+      });
+      function close1() {
+        var v = document.getElementById("video"); //获取视频节点
+        $(".videos").css("display", "none"); //点击关闭按钮关闭暂停视频
+        v.pause();
+        $(".videos").html();
+      }
+    </script>
+  </body>
+</html>
